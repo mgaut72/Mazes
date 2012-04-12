@@ -1,0 +1,9 @@
+This started out as a homework assignment, and I became interested in the
+different maze creation algorithms, so here we go.  The backtracker algorithm
+was that homework assignment, and hopefully as I explore these algorithms, my
+code will be come much cleaner.
+
+So far there is:
+
+    - The Recursive Backtracker algorithm
+    - The Recursize Division algorithm
