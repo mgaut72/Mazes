@@ -3,6 +3,12 @@ import java.util.*;
 class Backtracker
 {
 
+    /* constants */
+
+    static final char MAZE_WALL = '#';
+    static final char MAZE_PATH = ' ';
+
+
     /*instance variables*/
 
     private char[][] feild;   //The feild we are cutting into
@@ -33,7 +39,7 @@ class Backtracker
         //setting the inside to filled
         for(int i=0; i<rows; i++){
             for(int j=0; j<cols; j++){
-                feild[i][j] = '#';
+                feild[i][j] = MAZE_WALL;
             }
         }
 
@@ -65,7 +71,8 @@ class Backtracker
 
         tracker.addFirst(loc);
 
-        feild[start_row_index][start_col_index] = ' '; //clears the start point
+        //clears the start point
+        feild[start_row_index][start_col_index] = MAZE_PATH;
 
     }
 
@@ -83,8 +90,8 @@ class Backtracker
 
     private int[] canCut()
     {
-        int[] cut = new int[4];
-        int place =0;
+        int[] cut = new int[4];   //and array of the directions able to be cut
+        int place =0;             //number of directions that can be cut into
 
         //check to see if up is a valid direction
         if(canUp() !=   0){
@@ -132,7 +139,7 @@ class Backtracker
         int nxt_col = current[1];
 
         //if next location is in the array and not already cut, can cut it
-        if(nxt_row < 0 || feild[nxt_row][nxt_col] == ' '){
+        if(nxt_row < 0 || feild[nxt_row][nxt_col] == MAZE_PATH){
             return 0;
         }else{
 
@@ -149,7 +156,7 @@ class Backtracker
         int nxt_col = current[1];
 
         //if the next location is in the array and not already cut, can cut it
-        if(nxt_row > rows-1 || feild[nxt_row][nxt_col] == ' '){
+        if(nxt_row > rows-1 || feild[nxt_row][nxt_col] == MAZE_PATH){
             return 0;
         }else{
             return 3; //3 corresponds to down
@@ -164,7 +171,7 @@ class Backtracker
         int nxt_col = current[1]+2;
 
         //if the next location is in the array and not already cut, can cut it
-        if(nxt_col > cols-1 || feild[nxt_row][nxt_col] == ' '){
+        if(nxt_col > cols-1 || feild[nxt_row][nxt_col] == MAZE_PATH){
             return 0;
         }else{
             return 2; //2 corresponds to right
@@ -179,7 +186,7 @@ class Backtracker
         int nxt_col = current[1]-2;
 
         //if next location is in the array and not already cut, can cut it
-        if(nxt_col < 0 || feild[nxt_row][nxt_col] == ' '){
+        if(nxt_col < 0 || feild[nxt_row][nxt_col] == MAZE_PATH){
             return 0;
         }else{
             return 4; //4 corresponds to left
@@ -197,8 +204,8 @@ class Backtracker
 
 
         //sets the next index and the wall between it to blank
-        feild[current[0]-1][current[1]] = ' ';
-        feild[current[0]-2][current[1]] = ' ';
+        feild[current[0]-1][current[1]] = MAZE_PATH;
+        feild[current[0]-2][current[1]] = MAZE_PATH;
 
         loc[0] = nxt_row;
         loc[1] = nxt_col;
@@ -221,8 +228,8 @@ class Backtracker
 
 
         //clears the next index and the wall between it
-        feild[current[0]+1][current[1]] = ' ';
-        feild[current[0]+2][current[1]] = ' ';
+        feild[current[0]+1][current[1]] = MAZE_PATH;
+        feild[current[0]+2][current[1]] = MAZE_PATH;
 
         loc[0] = nxt_row;
         loc[1] = nxt_col;
@@ -245,8 +252,8 @@ class Backtracker
 
 
         //clears the necessary locaitons
-        feild[current[0]][current[1]+1] = ' ';
-        feild[current[0]][current[1]+2] = ' ';
+        feild[current[0]][current[1]+1] = MAZE_PATH;
+        feild[current[0]][current[1]+2] = MAZE_PATH;
 
         loc[0] = nxt_row;
         loc[1] = nxt_col;
@@ -268,8 +275,8 @@ class Backtracker
 
 
         //clears the necessary locaitons
-        feild[current[0]][current[1]-1] = ' ';
-        feild[current[0]][current[1]-2] = ' ';
+        feild[current[0]][current[1]-1] = MAZE_PATH;
+        feild[current[0]][current[1]-2] = MAZE_PATH;
 
         loc[0] = nxt_row;
         loc[1] = nxt_col;
@@ -300,8 +307,8 @@ class Backtracker
         int exit_row = rand2.nextInt(act_rows-1) * 2 +1;
 
         //clear the location
-        feild[entrance_row][0] = ' ';
-        feild[exit_row][cols-1] = ' ';
+        feild[entrance_row][0] = MAZE_PATH;
+        feild[exit_row][cols-1] = MAZE_PATH;
 
     }
 

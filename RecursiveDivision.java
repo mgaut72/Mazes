@@ -2,6 +2,10 @@ import java.util.*;
 
 class RecursiveDivision
 {
+    static final char MAZE_WALL = '#';
+    static final char MAZE_PATH = ' ';
+
+
     int rows;
     int cols;
     int act_rows;
@@ -24,19 +28,19 @@ class RecursiveDivision
         //set the maze to empty
         for(int i=0; i<rows; i++){
             for(int j=0; j<cols; j++){
-                board[i][j] = ' ';
+                board[i][j] = MAZE_PATH;
             }
         }
 
         //make the outter walls
         for(int i=0; i<rows; i++){
-            board[i][0] = '#';
-            board[i][cols-1] = '#';
+            board[i][0] = MAZE_WALL;
+            board[i][cols-1] = MAZE_WALL;
         }
 
         for(int i=0; i<cols; i++){
-            board[0][i] = '#';
-            board[rows-1][i] = '#';
+            board[0][i] = MAZE_WALL;
+            board[rows-1][i] = MAZE_WALL;
         }
 
 
@@ -91,14 +95,14 @@ class RecursiveDivision
 
         //draw a line at the halfway point
         for(int i=top; i<bottom; i++){
-            board[i][half] = '#';
+            board[i][half] = MAZE_WALL;
         }
 
         //get a random odd integer between top and bottom and clear it
         Random rand = new Random();
         int clearSpace = top + rand.nextInt((bottom-top)/2) * 2 + 1;
 
-        board[clearSpace][half] = ' ';
+        board[clearSpace][half] = MAZE_PATH;
 
         makeMaze(left, half, top, bottom);
         makeMaze(half, right, top, bottom);
@@ -113,14 +117,14 @@ class RecursiveDivision
 
         //draw a line at the halfway point
         for(int i=left; i<right; i++){
-            board[half][i] = '#';
+            board[half][i] = MAZE_WALL;
         }
 
         //get a random odd integer between left and right and clear it
         Random rand = new Random();
         int clearSpace = left + rand.nextInt((right-left)/2) * 2 + 1;
 
-        board[half][clearSpace] = ' ';
+        board[half][clearSpace] = MAZE_PATH;
 
         //recur for both parts of the newly split section
         makeMaze(left, right, top, half);
@@ -137,8 +141,8 @@ class RecursiveDivision
         int exit_row = rand2.nextInt(act_rows-1) * 2 +1;
 
         //clear the location
-        board[entrance_row][0] = ' ';
-        board[exit_row][cols-1] = ' ';
+        board[entrance_row][0] = MAZE_PATH;
+        board[exit_row][cols-1] = MAZE_PATH;
 
     }
 
