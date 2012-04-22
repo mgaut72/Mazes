@@ -238,6 +238,37 @@ class Ellers
 
     }
 
+    public void makeOpenings(){
+
+        Random rand = new Random(); //two different random number generators
+        Random rand2 = new Random();//just in case
+
+        //a random location for the entrance and exit
+        int entrance_row = rand.nextInt(act_rows-1) * 2 +1;
+        int exit_row = rand2.nextInt(act_rows-1) * 2 +1;
+
+        //clear the location
+        board[entrance_row][0] = MAZE_PATH;
+        board[exit_row][cols-1] = MAZE_PATH;
+
+    }
+
+    public void printMaze()
+    {
+        for(int i=0; i<rows; i++){
+            for(int j=0; j<cols; j++){
+                System.out.print(feild[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    public char[][] getMaze()
+    {
+        return feild;
+    }
+
+
 
 }
 
