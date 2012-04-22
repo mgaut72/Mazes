@@ -11,6 +11,7 @@ class Mazes
 
 
 
+        
         System.out.println("Recursive Backtracker Maze and Solution:");
 
         Backtracker recBack = new Backtracker(ROWS,COLS);
@@ -24,6 +25,7 @@ class Mazes
         recBackSol.printSolution();
 
         System.out.println("\n");
+       
 
 
 
@@ -43,6 +45,7 @@ class Mazes
 
 
 
+        
         System.out.println("Eller's Algorithm Maze and Solution:");
 
         Ellers ell = new Ellers(ROWS,COLS);
@@ -54,5 +57,6 @@ class Mazes
         ellSol.printSolution();
 
         System.out.println("\n");
+        
     }
 }

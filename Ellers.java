@@ -43,7 +43,7 @@ class Ellers
         }
 
 
-        for(int i=0; i<current.length; i++){
+        for(int i=0; i<next.length; i++){
             next[i] = UNDETERMINED;
         }
 

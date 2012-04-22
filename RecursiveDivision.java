@@ -89,47 +89,49 @@ class RecursiveDivision
 
     private void divideVertical(int left, int right, int top, int bottom)
     {
-        //find the halfway point
-        int half = (right+left)/2;
-        if(half%2 == 1)
-            half++;
+        Random rand = new Random();
+
+        //find a random point to divide at
+        //must be even to draw a wall there
+        int divide =  left + 2 + rand.nextInt((right-left-1)/2)*2;
 
         //draw a line at the halfway point
         for(int i=top; i<bottom; i++){
-            board[i][half] = MAZE_WALL;
+            board[i][divide] = MAZE_WALL;
         }
 
         //get a random odd integer between top and bottom and clear it
-        Random rand = new Random();
         int clearSpace = top + rand.nextInt((bottom-top)/2) * 2 + 1;
 
-        board[clearSpace][half] = MAZE_PATH;
+        board[clearSpace][divide] = MAZE_PATH;
 
-        makeMaze(left, half, top, bottom);
-        makeMaze(half, right, top, bottom);
+        makeMaze(left, divide, top, bottom);
+        makeMaze(divide, right, top, bottom);
     }
 
     private void divideHorizontal(int left, int right, int top, int bottom)
     {
-        //find the halfway point
-        int half = (top+bottom)/2;
-        if(half%2 == 1)
-            half++;
+        Random rand = new Random();
+
+        //find a random point to divide at
+        //must be even to draw a wall there
+        int divide =  top + 2 + rand.nextInt((bottom-top-1)/2)*2;
+        if(divide%2 == 1)
+            divide++;
 
         //draw a line at the halfway point
         for(int i=left; i<right; i++){
-            board[half][i] = MAZE_WALL;
+            board[divide][i] = MAZE_WALL;
         }
 
         //get a random odd integer between left and right and clear it
-        Random rand = new Random();
         int clearSpace = left + rand.nextInt((right-left)/2) * 2 + 1;
 
-        board[half][clearSpace] = MAZE_PATH;
+        board[divide][clearSpace] = MAZE_PATH;
 
         //recur for both parts of the newly split section
-        makeMaze(left, right, top, half);
-        makeMaze(left, right, half, bottom);
+        makeMaze(left, right, top, divide);
+        makeMaze(left, right, divide, bottom);
     }
 
     public void makeOpenings(){
