@@ -248,8 +248,8 @@ class Ellers
         int exit_row = rand2.nextInt(act_rows-1) * 2 +1;
 
         //clear the location
-        board[entrance_row][0] = MAZE_PATH;
-        board[exit_row][cols-1] = MAZE_PATH;
+        feild[entrance_row][0] = MAZE_PATH;
+        feild[exit_row][cols-1] = MAZE_PATH;
 
     }
 
