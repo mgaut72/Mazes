@@ -112,6 +112,7 @@ class Ellers
         }
 
         makeLastRow();
+        makeOpenings();
 
     }
 

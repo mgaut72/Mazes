@@ -46,6 +46,62 @@ class Backtracker
     }//end constructor
 
 
+    //actual implementation of the algorithm
+    public void makeMaze()
+    {
+
+
+        int[] cut_order;//an array that gets all the possible motions
+                        //to which can be cut into
+
+        int not_done;     /*a variable that is positive when there are items
+                           *in the stack, and negative when the stack of
+                           *locations is empty
+                           */
+
+
+        start();     //picks a random location to start building the maze
+
+        not_done = stackPeek();  /*initializes the looping condition now
+                                  *that there is a location (the start)
+                                  *in the stack
+                                  */
+
+        //loops while there are locations in the stack
+        while(not_done > 0){
+            cut_order = canCut();  //gets the availible locations
+
+
+
+            //if there are directions to cut into
+            if(cut_order[0] != 0){
+
+                cut_order = mix(cut_order); //shuffle the availible directions
+
+                //take the first direction to be cut into after shuffling and
+                //cut into it.  like shuffling a deck of cards and drawing the
+                //top card
+                if(cut_order[0] == 1){
+                    cutNextUp();
+                }else if(cut_order[0] == 2){
+                    cutNextRight();
+                }else if(cut_order[0] == 3){
+                    cutNextDown();
+                }else if(cut_order[0] == 4){
+                    cutNextLeft();
+                }
+            }else{  //if there are no directions to cut, back up one locaiton
+                back();
+            }
+
+
+            not_done = stackPeek();  //are the more locations in stack?
+        }
+
+        makeOpenings();
+
+    }
+
 
     //getter
     public char[][] getMaze()
@@ -312,60 +368,6 @@ class Backtracker
 
     }
 
-
-    //actual implementation of the algorithm
-    public void makeMaze()
-    {
-
-
-        int[] cut_order;//an array that gets all the possible motions
-                        //to which can be cut into
-
-        int not_done;     /*a variable that is positive when there are items
-                           *in the stack, and negative when the stack of
-                           *locations is empty
-                           */
-
-
-        start();     //picks a random location to start building the maze
-
-        not_done = stackPeek();  /*initializes the looping condition now
-                                  *that there is a location (the start)
-                                  *in the stack
-                                  */
-
-        //loops while there are locations in the stack
-        while(not_done > 0){
-            cut_order = canCut();  //gets the availible locations
-
-
-
-            //if there are directions to cut into
-            if(cut_order[0] != 0){
-
-                cut_order = mix(cut_order); //shuffle the availible directions
-
-                //take the first direction to be cut into after shuffling and
-                //cut into it.  like shuffling a deck of cards and drawing the
-                //top card
-                if(cut_order[0] == 1){
-                    cutNextUp();
-                }else if(cut_order[0] == 2){
-                    cutNextRight();
-                }else if(cut_order[0] == 3){
-                    cutNextDown();
-                }else if(cut_order[0] == 4){
-                    cutNextLeft();
-                }
-            }else{  //if there are no directions to cut, back up one locaiton
-                back();
-            }
-
-
-            not_done = stackPeek();  //are the more locations in stack?
-        }
-
-    }
 
 
     private static int[] mix(int[] arr)

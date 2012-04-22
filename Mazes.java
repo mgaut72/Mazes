@@ -15,7 +15,6 @@ class Mazes
 
         Backtracker recBack = new Backtracker(ROWS,COLS);
         recBack.makeMaze();
-        recBack.makeOpenings();
         recBack.printMaze();
 
         System.out.println();
@@ -32,7 +31,6 @@ class Mazes
 
         RecursiveDivision recDiv = new RecursiveDivision(ROWS,COLS);
         recDiv.makeMaze();
-        recDiv.makeOpenings();
         recDiv.printMaze();
 
         System.out.println();
@@ -49,7 +47,6 @@ class Mazes
 
         Ellers ell = new Ellers(ROWS,COLS);
         ell.makeMaze();
-        ell.makeOpenings();
         ell.printMaze();
 
         Solver ellSol = new Solver(ell.getMaze());

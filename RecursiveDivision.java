@@ -50,6 +50,7 @@ class RecursiveDivision
     public void makeMaze()
     {
         makeMaze(0,cols-1,0,rows-1);
+        makeOpenings();
     }
 
 
