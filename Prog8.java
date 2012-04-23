@@ -30,6 +30,10 @@ public class Prog8 extends GraphicsProgram
         rDiv.makeMaze();
         numMazes++;
 
+        GrowingTree gTree = new GrowingTree(rows,cols);
+        gTree.makeMaze();
+        numMazes++;
+
 
 
 
@@ -39,11 +43,10 @@ public class Prog8 extends GraphicsProgram
 
 
 
-        /* ---------   FOR THE UNSOLVED MAZE  -------- */
 
 
         //an attempt at a decent scale of the maze
-        final double delta = (double)1.5*getWidth()/(7*cols);
+        final double delta = (double)1.3*getWidth()/(7*cols);
 
 
         double x = delta;  //coordinates in the maze
@@ -57,6 +60,8 @@ public class Prog8 extends GraphicsProgram
                 maze = bTrack.getMaze();
             if(k==2)
                maze = rDiv.getMaze();
+            if(k==3)
+                maze = gTree.getMaze();
 
 
 
@@ -66,7 +71,7 @@ public class Prog8 extends GraphicsProgram
          * the current point and the point either to the right and/or below,
          * draw the line.
          */
-        for(int i=0; i<maze.length; i++){
+            for(int i=0; i<maze.length; i++){
 
             x = delta+(delta*2.2*cols*k); //always start at the first column
 
@@ -104,83 +109,6 @@ public class Prog8 extends GraphicsProgram
         }
         }
 
-
-        //        /* -------   FOR THE SOLVED MAZE  ------- */
-        //
-        //
-        //        //an attempt at a decent scale of the maze
-        //
-        //        double xs = x + (2*delta);  //coordinates in the maze
-        //        y = delta;
-        //
-        //        /*
-        //         * loop through the feild.  if there needs to be a line drawn between
-        //         * the current point and the point either to the right and/or below,
-        //         * draw the line.
-        //         */
-        //        for(int i=0; i<solved_maze.length; i++){
-        //
-        //            xs = x+(2*delta);
-        //            for(int j=0; j<solved_maze[i].length; j++){
-        //
-        //                if(solved_maze[i][j] == MAZE_WALL){
-        //
-        //                    if(i != solved_maze.length-1){
-        //                        if(solved_maze[i+1][j] == MAZE_WALL){
-        //                            GLine line = new GLine(xs,y,xs,y+delta);
-        //                            line.setColor(Color.BLUE);
-        //                            add(line);
-        //                        }
-        //                    }
-        //
-        //                    if(j != solved_maze[i].length-1){
-        //                        if(solved_maze[i][j+1] == MAZE_WALL){
-        //                            GLine line = new GLine(xs,y,xs+delta,y);
-        //                            line.setColor(Color.BLUE);
-        //                            add(line);
-        //                        }
-        //                    }
-        //                }
-        //
-        //                xs+=delta;
-        //            }
-        //            y+=delta;
-        //        }
-        //
-        //        // FOR THE SOLUTION LINE
-        //
-        //
-        //        y = delta;
-        //
-        //        //loop through the maze and connect all the plus signs with a red line
-        //        for(int i=0; i<solved_maze.length; i++){
-        //
-        //            xs = x+(2*delta);
-        //            for(int j=0; j<solved_maze[i].length; j++){
-        //
-        //                if(solved_maze[i][j] == '+'){
-        //
-        //                    if(i != solved_maze.length-1){
-        //                        if(solved_maze[i+1][j] == '+'){
-        //                            GLine line = new GLine(xs,y,xs,y+delta);
-        //                            line.setColor(Color.RED);
-        //                            add(line);
-        //                        }
-        //                    }
-        //
-        //                    if(j != solved_maze[i].length-1){
-        //                        if(solved_maze[i][j+1] == '+'){
-        //                            GLine line = new GLine(xs,y,xs+delta,y);
-        //                            line.setColor(Color.RED);
-        //                            add(line);
-        //                        }
-        //                    }
-        //                }
-        //
-        //                xs+=delta;
-        //            }
-        //            y+=delta;
-        //        }
-
     }
 }
+

@@ -51,10 +51,28 @@ class Mazes
         Ellers ell = new Ellers(ROWS,COLS);
         ell.makeMaze();
         ell.printMaze();
+        
+        System.out.println();
 
         Solver ellSol = new Solver(ell.getMaze());
         ellSol.solveMaze();
         ellSol.printSolution();
+
+        System.out.println("\n");
+
+
+
+        System.out.println("Growing Tree Algorithm Maze and Solution:");
+
+        GrowingTree gTree = new GrowingTree(ROWS, COLS);
+        gTree.makeMaze();
+        gTree.printMaze();
+
+        System.out.println();
+
+        Solver gTreeSol = new Solver(gTree.getMaze());
+        gTreeSol.solveMaze();
+        gTreeSol.printSolution();
 
         System.out.println("\n");
         
