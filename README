@@ -8,3 +8,10 @@ So far there is:
     - The Recursive Backtracker algorithm
     - The Recursize Division algorithm
     - Ellers algorithm
+    - Growing Tree algorithm
+
+
+
+NOTE:
+    To get Prog8 to function, it needs to be compied and run with
+    a reference to the acm.jar package, availible at http://jtf.acm.org/
