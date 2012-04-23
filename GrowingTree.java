@@ -76,11 +76,9 @@ class GrowingTree
                 }
             }
         }
+
+        makeOpenings();
     }
-
-
-
-
 
     private void setInitialLocation()
     {
