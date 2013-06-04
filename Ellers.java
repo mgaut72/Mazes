@@ -36,8 +36,8 @@ class Ellers
 
 
         /* Sets the maze to filled */
-        for(int i =0; i<feild[0].length; i++){
-            for(int j=0; j<feild.length; j++){
+        for(int i =0; i<feild.length; i++){
+            for(int j=0; j<feild[0].length; j++){
                 feild[i][j] = MAZE_WALL;
             }
         }
